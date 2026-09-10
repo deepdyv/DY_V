@@ -3,78 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07101c">
-<meta name="description" content="DY_V - Anime, Movies and Series discovery">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-<title>DY_V - Anime • Movies • Series</title>
+<title>DY_V</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#050b14;color:#f5f7fb;font-family:Arial,sans-serif}
-header{padding:14px 18px;background:#07101c;border-bottom:1px solid #26364a;position:sticky;top:0}
+*{box-sizing:border-box}body{margin:0;background:#050b14;color:#fff;font-family:Arial}
+header{padding:14px 18px;background:#07101c;border-bottom:1px solid #26364a;position:sticky;top:0;z-index:10}
 .logo{font-size:32px;font-weight:900}.logo span{color:#e52323}
-nav{display:flex;gap:18px;overflow:auto;margin-top:12px;white-space:nowrap}nav a{color:#ddd;text-decoration:none;font-weight:bold}
+nav{display:flex;gap:18px;overflow:auto;margin-top:12px}nav a{color:#ddd;text-decoration:none;font-weight:bold}
 .search{margin-top:12px;background:#172536;border-radius:10px;padding:7px 10px;border:1px solid #2a3c52}.search input{width:90%;background:none;border:none;color:white;outline:none}
-.hero{margin:18px;height:300px;border-radius:11px;padding:3px 10px;border-radius:5px;font-weight:bold}.hero h1{font-size:50px;margin:0}
-button{padding:11px 15px;border:0;border-radius:10px;background:#ff2638;color:white;font-weight:bold;margin-right:7px}
-.categories{display:flex;gap:10px;padding:0 18px 22px;overflow:auto}.categories button{background:#101d2d;border:1px solid #2a3c52}
-section{padding:0 18px 20px}.title{font-size:20px}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:#0c1725;border:1px solid #1d3044;border-radius:10px;padding:9px}.poster{height:180px;border-radius:7px;background-size:cover !important;background-position:center !important;display:flex;align-items:center;justify-content:center;font-weight:900;color:#ffd000;background-color:#1a2a3f}
-.card h3{font-size:15px;margin:8px 2px 4px}.rating{color:#ffd000}
-footer{text-align:center;padding:23px;border-top:1px solid #2c3d3d;color:#8795a5}
-@media(min-width:700px){.cards{grid-template-columns:repeat(4,1fr)}.hero{height:330px}.search{position:absolute;right:18px;top:12px;width:250px}}
+.hero{margin:18px;height:320px;border-radius:15px;padding:20px;background:linear-gradient(45deg,#0f2340,#1a0f2e);display:flex;align-items:flex-end}
+button{padding:11px 15px;border:0;border-radius:10px;background:#ff2638;color:white;font-weight:bold;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:#0c1725;border:1px solid #1d3044;border-radius:12px;overflow:hidden}
+.poster{height:220px;background-size:cover !important;background-position:center !important}
+.card-info{padding:9px}.rating{color:#ffd000}
+section{padding:0 18px 20px}
 </style>
 </head>
 <body>
-<div id="installBar" style="display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:20;background:#101d2d;border:1px solid #2a3c52;padding:12px;border-radius:12px">
-<b> 📲 Install DY_V</b><button id="installBtn" style="float:right">Install App</button>
-</div>
-<header><div class="logo">DY_<span>V</span></div>
-<nav><a class="active" href="#">🏠 Home</a><a href="#">⚔️ Anime</a><a href="#">🎬 Movies</a><a href="#">📺 Series</a><a href="#">🔥 Trending</a></div>
-<div class="search">🔍 <input id="search" placeholder="Search anime, movies, series..."></div></header>
-<div class="hero"><div><small>TRENDING</small><h2>DY_V is the home of Anime, Movies, Series</h2><p>Discover your next favorite show.</p><button onclick="openTrailer()">▶️ Watch Trailer</button></div></div>
-<div class="categories"><button>⚔️ Anime</button><button>🎬 Movies</button><button>📺 Series</button><button>🔥 Trending</button></div>
-<section><div class="title"><h2>🔥 Trending Anime</h2></div><div class="cards">
-<div class="card"><div class="poster" style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500')">SOLO</div><div><h3>Solo Leveling</h3><div class="rating">⭐ 8.7/10</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500')">ONE PIECE</div><div><h3>One Piece</h3><div class="rating">⭐ 8.9/10</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://images.unsplash.com/photo-1608346128025-1896b97a6fa7?w=500')">DEMON</div><div><h3>Demon Slayer</h3><div class="rating">⭐ 8.6/10</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500')">JUJUTSU</div><div><h3>Jujutsu Kaisen</h3><div class="rating">⭐ 8.8/10</div></div></div>
+<header><div class="logo">DY_<span>V</span></div><nav><a>🏠 Home</a><a>⚔️ Anime</a><a>🎬 Movies</a><a>📺 Series</a></nav><div class="search">🔍 <input id="search" placeholder="Search..."></div></header>
+<div class="hero"><div><small style="color:#ff2638;font-weight:bold">TRENDING</small><h2>DY_V is the home of Anime, Movies, Series</h2><button onclick="openTrailer()">▶️ Watch Trailer</button></div></div>
+
+<section><h2>🔥 Trending Anime</h2><div class="cards">
+<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1925/142334.jpg')"></div><div class="card-info"><h3>Solo Leveling</h3><div class="rating">⭐ 8.7/10</div></div></div>
+<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/6/73245.jpg')"></div><div class="card-info"><h3>One Piece</h3><div class="rating">⭐ 8.9/10</div></div></div>
+<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1286/99889.jpg')"></div><div class="card-info"><h3>Demon Slayer</h3><div class="rating">⭐ 8.6/10</div></div></div>
+<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1806/126216.jpg')"></div><div class="card-info"><h3>Jujutsu Kaisen</h3><div class="rating">⭐ 8.8/10</div></div></div>
 </div></section>
-<section><div class="title"><h2>🎬 Popular Movies</h2></div><div class="cards">
-<div class="card"><div class="poster" style="background-image:url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500')">MOVIE</div><div><h3>Interstellar</h3><div class="rating">⭐ 8.6</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500')">MOVIE</div><div><h3>Inception</h3><div class="rating">⭐ 8.8</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=500')">MOVIE</div><div><h3>The Dark Knight</h3><div class="rating">⭐ 9.0</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500')">MOVIE</div><div><h3>John Wick</h3><div class="rating">⭐ 7.4</div></div></div>
-</div></section>
-<footer>© 2026 DY_V • Anime • Movies • Series</footer>
 
-<div id="trailerModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:999;justify-content:center;align-items:center;flex-direction:column" onclick="this.style.display='none'">
-<iframe id="yt" width="95%" height="250" src="" frameborder="0" allowfullscreen></iframe>
-<p style="color:white;margin-top:10px">Click anywhere to close</p>
-</div>
-
-<script>
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', e => {
-e.preventDefault();
-deferredPrompt = e;
-document.getElementById("installBar").style.display = "block";
-});
-document.getElementById("installBtn").addEventListener("click", async () => {
-if (!deferredPrompt) return;
-deferredPrompt.prompt();
-await deferredPrompt.userChoice;
-deferredPrompt = null;
-document.getElementById("installBar").style.display = "none";
-});
-if ("serviceWorker" in navigator) {
-window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
-}
-document.getElementById('search').addEventListener('input',e=>{let q=e.target.value.toLowerCase();document.querySelectorAll('.card').forEach(c=>{c.style.display=c.innerText.toLowerCase().includes(q)?'block':'none'})});
-
-function openTrailer(){
-document.getElementById('yt').src='https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1';
-document.getElementById('trailerModal').style.display='flex';
-}
-</script>
-</body></html>
+<section><h2>🎬 Popular Movies</h2><div class="cards">
+<div class="card"><div class="poster" style="background-image:url('https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg')"></div><div class="card-info"><h3>Interstellar</h3><div class="rating">⭐ 8.6</div></div></div>
+<div class="card"><div class="poster" style="background-image:url('https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg')"></div><div class="card-info"><h3>Inception</h3><div class="rating">⭐ 8.8</div></div></div>
+<div class="card"><div class="poster" style="background-image:url('https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg')"></div><div class="card-info"><h3>The Dark Knight</h3><div class="rating">⭐ 9.0</div></div></div>
+<div class="card"><div class="poster" style="background-image:url
