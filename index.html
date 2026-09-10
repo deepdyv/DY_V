@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07101c">
+<meta name="description" content="DY_V — Anime, Movies and Series discovery">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>DY_V — Anime • Movies • Series</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#050b14;color:#f5f7fb;font-family:Arial,sans-serif}
+header{padding:14px 18px;background:#07101c;border-bottom:1px solid #26364a;position:sticky;top:0}
+.logo{font-size:32px;font-weight:900}.logo span{color:#e52332}
+nav{display:flex;gap:18px;overflow:auto;margin-top:12px;white-space:nowrap}nav a{color:#ddd;text-decoration:none;font-weight:bold}.active{color:#ff3344}
+.search{margin-top:12px;background:#172536;border-radius:10px;padding:10px}.search input{width:90%;background:none;border:0;outline:0;color:white;font-size:15px}
+.hero{margin:18px;height:300px;border-radius:14px;padding:35px;display:flex;align-items:center;border:1px solid #26384e;background:radial-gradient(circle at 75% 40%,#164b88,#07101c 58%,#03070d)}
+.hero small{background:#ff2638;padding:7px 10px;border-radius:5px;font-weight:bold}.hero h1{font-size:50px;margin:18px 0 4px}.hero h2{margin:0 0 10px}.hero p{color:#aebdce}
+button{padding:11px 15px;border:0;border-radius:7px;background:#ff2638;color:white;font-weight:bold;margin-right:7px}.outline{background:transparent;border:1px solid #718198}
+.categories{display:flex;gap:10px;padding:0 18px 22px;overflow:auto}.categories button{background:#101d2d;border:1px solid #25384e;min-width:105px}
+section{padding:0 18px 26px}.title{font-size:20px}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:#0c1725;border:1px solid #1d3044;border-radius:10px;padding:9px}.poster{height:180px;border-radius:7px;background:linear-gradient(145deg,#19385b,#0a111a);display:grid;place-items:center;color:#86acd6;font-weight:900}
+.card h3{font-size:15px;margin:9px 2px 4px}.rating{color:#ffd000}
+footer{text-align:center;padding:25px;border-top:1px solid #1c2b3d;color:#8795a5}
+@media(min-width:700px){.cards{grid-template-columns:repeat(4,1fr)}.hero{height:330px}.search{position:absolute;right:18px;top:14px;margin:0;width:280px}}
+</style>
+</head>
+<body>
+<div id="installBar" style="display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:20;background:#101d2d;border:1px solid #30465f;border-radius:12px;padding:12px;box-shadow:0 10px 30px #0008">
+  <b>📱 Install DY_V</b><button id="installBtn" style="float:right">Install App</button>
+</div>
+<header><div class="logo">DY_<span>V</span></div>
+<nav><a class="active" href="#">Home</a><a href="#">Anime</a><a href="#">Movies</a><a href="#">Series</a><a href="#">Trending</a><a href="#">Latest</a><a href="#">Popular</a></nav>
+<div class="search">🔎 <input id="search" placeholder="Search anime, movies, series..."></div></header>
+<div class="hero"><div><small>TRENDING</small><h1>DY_V</h1><h2>Anime • Movies • Series</h2><p>Discover your next favorite story.</p><button>▶ Watch Trailer</button><button class="outline">＋ Watchlist</button></div></div>
+<div class="categories"><button>🎌 Anime</button><button>🎬 Movies</button><button>📺 Series</button><button>🔥 Trending</button><button>🆕 Latest</button><button>⭐ Popular</button></div>
+<section><div class="title"><h2>🔥 Trending Anime</h2></div><div class="cards">
+<div class="card"><div class="poster">ANIME</div><h3>Solo Leveling</h3><div class="rating">⭐ 8.7</div></div>
+<div class="card"><div class="poster">ANIME</div><h3>One Piece</h3><div class="rating">⭐ 8.9</div></div>
+<div class="card"><div class="poster">ANIME</div><h3>Demon Slayer</h3><div class="rating">⭐ 8.6</div></div>
+<div class="card"><div class="poster">ANIME</div><h3>Jujutsu Kaisen</h3><div class="rating">⭐ 8.8</div></div>
+</div></section>
+<section><div class="title"><h2>🎬 Popular Movies</h2></div><div class="cards">
+<div class="card"><div class="poster">MOVIE</div><h3>Interstellar</h3><div class="rating">⭐ 8.6</div></div>
+<div class="card"><div class="poster">MOVIE</div><h3>Inception</h3><div class="rating">⭐ 8.8</div></div>
+<div class="card"><div class="poster">MOVIE</div><h3>The Dark Knight</h3><div class="rating">⭐ 9.0</div></div>
+<div class="card"><div class="poster">MOVIE</div><h3>John Wick</h3><div class="rating">⭐ 7.4</div></div>
+</div></section>
+<section><div class="title"><h2>📺 Latest Series</h2></div><div class="cards">
+<div class="card"><div class="poster">SERIES</div><h3>Breaking Bad</h3><div class="rating">⭐ 9.5</div></div>
+<div class="card"><div class="poster">SERIES</div><h3>Stranger Things</h3><div class="rating">⭐ 8.7</div></div>
+<div class="card"><div class="poster">SERIES</div><h3>The Last of Us</h3><div class="rating">⭐ 9.3</div></div>
+<div class="card"><div class="poster">SERIES</div><h3>Wednesday</h3><div class="rating">⭐ 8.1</div></div>
+</div></section>
+<footer>© 2026 DY_V • Anime • Movies • Series</footer>
+<script>
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById("installBar").style.display = "block";
+});
+document.getElementById("installBtn").addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  document.getElementById("installBar").style.display = "none";
+});
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+}
+document.getElementById('search').addEventListener('input',e=>{let q=e.target.value.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.style.display=c.innerText.toLowerCase().includes(q)?'block':'none')})</script>
+</body></html>
