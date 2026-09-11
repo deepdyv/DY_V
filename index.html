@@ -2,37 +2,48 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="manifest" href="manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DY_V</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#050b14;color:#fff;font-family:Arial}
 header{padding:14px 18px;background:#07101c;border-bottom:1px solid #26364a;position:sticky;top:0;z-index:10}
-.logo{font-size:32px;font-weight:900}.logo span{color:#e52323}
+.logo{font-size:32px;font-weight:900}.logo span{color:#e53233}
 nav{display:flex;gap:18px;overflow:auto;margin-top:12px}nav a{color:#ddd;text-decoration:none;font-weight:bold}
-.search{margin-top:12px;background:#172536;border-radius:10px;padding:7px 10px;border:1px solid #2a3c52}.search input{width:90%;background:none;border:none;color:white;outline:none}
-.hero{margin:18px;height:320px;border-radius:15px;padding:20px;background:linear-gradient(45deg,#0f2340,#1a0f2e);display:flex;align-items:flex-end}
-button{padding:11px 15px;border:0;border-radius:10px;background:#ff2638;color:white;font-weight:bold;cursor:pointer}
+.hero{margin:18px;height:320px;background:#125; border-radius:20px;padding:20px;background:linear-gradient(45deg,#0d2340,#17202e);display:flex;align-items:end}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:#0c1725;border:1px solid #1d3044;border-radius:12px;overflow:hidden}
-.poster{height:220px;background-size:cover !important;background-position:center !important}
-.card-info{padding:9px}.rating{color:#ffd000}
+.card{background:#0c1725;border-radius:12px;overflow:hidden;border:1px solid #1d3048}
+.poster{height:220px;background-size:cover!important;background-position:center!important}
+.card-info{padding:9px}.rating{color:#ffd000;font-size:13px;font-weight:bold}
 section{padding:0 18px 20px}
+.watch{margin-top:8px;background:#ff2638;color:white;text-align:center;padding:7px;border-radius:8px;display:block;text-decoration:none;font-weight:bold}
+.count{color:#ff4d5a;font-weight:900;margin-top:4px}
 </style>
 </head>
 <body>
-<header><div class="logo">DY_<span>V</span></div><nav><a>🏠 Home</a><a>⚔️ Anime</a><a>🎬 Movies</a><a>📺 Series</a></nav><div class="search">🔍 <input id="search" placeholder="Search..."></div></header>
-<div class="hero"><div><small style="color:#ff2638;font-weight:bold">TRENDING</small><h2>DY_V is the home of Anime, Movies, Series</h2><button onclick="openTrailer()">▶️ Watch Trailer</button></div></div>
+<header><div class="logo">DY_<span>V</span></div><nav><a>🏠 Home</a><a>⚔️ Anime</a><a>🎬 Movies</a><a>📺 Series</a></nav></header>
+<div class="hero"><div><small style="color:#ff2638;font-weight:bold">TRENDING</small><h2>DY_V is the home of Anime, Movies, Series.</h2></div></div>
 
 <section><h2>🔥 Trending Anime</h2><div class="cards">
-<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1925/142334.jpg')"></div><div class="card-info"><h3>Solo Leveling</h3><div class="rating">⭐ 8.7/10</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/6/73245.jpg')"></div><div class="card-info"><h3>One Piece</h3><div class="rating">⭐ 8.9/10</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1286/99889.jpg')"></div><div class="card-info"><h3>Demon Slayer</h3><div class="rating">⭐ 8.6/10</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1806/126216.jpg')"></div><div class="card-info"><h3>Jujutsu Kaisen</h3><div class="rating">⭐ 8.8/10</div></div></div>
+<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1925/142334.jpg')"></div><div class="card-info">Solo Leveling<div class="rating">⭐ 8.9/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
+<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/6/73245.jpg')"></div><div class="card-info">One Piece<div class="rating">⭐ 9.0/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
+<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1286/146074.jpg')"></div><div class="card-info">Demon Slayer<div class="rating">⭐ 8.9/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
+<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1806/126216.jpg')"></div><div class="card-info">Jujutsu Kaisen<div class="rating">⭐ 8.8/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
 </div></section>
 
 <section><h2>🎬 Popular Movies</h2><div class="cards">
-<div class="card"><div class="poster" style="background-image:url('https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg')"></div><div class="card-info"><h3>Interstellar</h3><div class="rating">⭐ 8.6</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg')"></div><div class="card-info"><h3>Inception</h3><div class="rating">⭐ 8.8</div></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg')"></div><div class="card-info"><h3>The Dark Knight</h3><div class="rating">⭐ 9.0</div></div></div>
-<div class="card"><div class="poster" style="background-image:url
+<div class="card"><div class="poster" style="background-image:url('https://image.tmdb.org/t/p/w500/gKZgWgQ5E7Z7K3x1b1y1x1y1x1y.jpg')"></div><div class="card-info">Movie 1<div class="rating">⭐ 8.5/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
+</div></section>
+
+<section><h2>🚀 Upcoming - Kobe Asbe</h2><div class="cards" id="upcoming"></div></section>
+
+<script>
+const data=[
+{name:"Solo Leveling S3",date:"2026-12-15",poster:"https://cdn.myanimelist.net/images/anime/1925/142334.jpg",trailer:"HkIKAnw9QTg"},
+{name:"Demon Slayer Infinity Castle",date:"2026-07-18",poster:"https://cdn.myanimelist.net/images/anime/1286/146074.jpg",trailer:"wPFeBXT-GlA"},
+{name:"One Piece Egghead Pt2",date:"2026-01-11",poster:"https://cdn.myanimelist.net/images/anime/6/73245.jpg",trailer:"Ades3pQbeh8"}
+];
+const box=document.getElementById('upcoming');
+data.forEach(m=>{
+let diff=Math.ceil((new Date(m.date)-new Date())/(1000*60*60*24));
+let txt=diff>0?diff+" din baki":"Released!";
+box.innerHTML+=`<div class="card"><div class="poster" style="background-image:url('${m.poster}')"></div><div class="card-info"><b>${m.name}</b><div class="rating">🗓️ ${m.date}</div><div class="count">⏳
