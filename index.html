@@ -5,45 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DY_V</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#050b14;color:#fff;font-family:Arial}
-header{padding:14px 18px;background:#07101c;border-bottom:1px solid #26364a;position:sticky;top:0;z-index:10}
-.logo{font-size:32px;font-weight:900}.logo span{color:#e53233}
-nav{display:flex;gap:18px;overflow:auto;margin-top:12px}nav a{color:#ddd;text-decoration:none;font-weight:bold}
-.hero{margin:18px;height:320px;background:#125; border-radius:20px;padding:20px;background:linear-gradient(45deg,#0d2340,#17202e);display:flex;align-items:end}
-.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:#0c1725;border-radius:12px;overflow:hidden;border:1px solid #1d3048}
-.poster{height:220px;background-size:cover!important;background-position:center!important}
-.card-info{padding:9px}.rating{color:#ffd000;font-size:13px;font-weight:bold}
-section{padding:0 18px 20px}
-.watch{margin-top:8px;background:#ff2638;color:white;text-align:center;padding:7px;border-radius:8px;display:block;text-decoration:none;font-weight:bold}
-.count{color:#ff4d5a;font-weight:900;margin-top:4px}
+body{margin:0;background:#060d1a;color:#fff;font-family:Arial}
+header{padding:14px 16px;background:#0a1628;position:sticky;top:0;z-index:20}
+.logo{font-size:34px;font-weight:900} .logo span{color:#e53233}
+nav{display:flex;gap:24px;margin-top:10px} nav a{color:#8da2b8;text-decoration:none;font-weight:bold;cursor:pointer} nav a.active{color:#fff;border-bottom:2px solid #e53233}
+.hero{margin:16px;border-radius:20px;background:linear-gradient(#132a4a,#0a1628);padding:22px;min-height:300px;display:flex;align-items:flex-end}
+.sec{padding:10px 14px} .cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#0f1f36;border-radius:14px;overflow:hidden;border:1px solid #1e3456}
+.poster{height:230px;background-size:cover;background-position:center}
+.info{padding:8px;font-size:14px} .star{color:#ffce2e;font-weight:bold}
+.btn{display:block;background:#e53233;color:#fff;text-align:center;padding:7px;border-radius:8px;margin-top:6px;text-decoration:none;font-weight:bold}
+#detail{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+#detailBox{background:#0f1f36;width:100%;max-width:400px;border-radius:16px;overflow:hidden}
 </style>
 </head>
 <body>
-<header><div class="logo">DY_<span>V</span></div><nav><a>🏠 Home</a><a>⚔️ Anime</a><a>🎬 Movies</a><a>📺 Series</a></nav></header>
-<div class="hero"><div><small style="color:#ff2638;font-weight:bold">TRENDING</small><h2>DY_V is the home of Anime, Movies, Series.</h2></div></div>
+<header>
+<div class="logo">DY_<span>V</span></div>
+<nav><a class="active" onclick="filter('all',this)">🏠 Home</a><a onclick="filter('anime',this)">⚔️ Anime</a><a onclick="filter('movie',this)">🎬 Movies</a><a onclick="filter('series',this)">📺 Series</a></nav>
+</header>
+<div class="hero"><div><b style="color:#e53233">TRENDING</b><h1>DY_V is the home of Anime, Movies, Series.</h1></div></div>
 
-<section><h2>🔥 Trending Anime</h2><div class="cards">
-<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1925/142334.jpg')"></div><div class="card-info">Solo Leveling<div class="rating">⭐ 8.9/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/6/73245.jpg')"></div><div class="card-info">One Piece<div class="rating">⭐ 9.0/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1286/146074.jpg')"></div><div class="card-info">Demon Slayer<div class="rating">⭐ 8.9/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
-<div class="card"><div class="poster" style="background-image:url('https://cdn.myanimelist.net/images/anime/1806/126216.jpg')"></div><div class="card-info">Jujutsu Kaisen<div class="rating">⭐ 8.8/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
-</div></section>
+<div class="sec" id="animeSec"><h2>🔥 Trending Anime</h2><div class="cards" id="animeCards"></div></div>
+<div class="sec" id="movieSec"><h2>🎬 Popular Movies</h2><div class="cards" id="movieCards"></div></div>
+<div class="sec" id="seriesSec"><h2>📺 Trending Series</h2><div class="cards" id="seriesCards"></div></div>
 
-<section><h2>🎬 Popular Movies</h2><div class="cards">
-<div class="card"><div class="poster" style="background-image:url('https://image.tmdb.org/t/p/w500/gKZgWgQ5E7Z7K3x1b1y1x1y1x1y.jpg')"></div><div class="card-info">Movie 1<div class="rating">⭐ 8.5/10</div><a class="watch" href="https://t.me/dyv_movies" target="_blank">▶️ Watch</a></div></div>
-</div></section>
-
-<section><h2>🚀 Upcoming - Kobe Asbe</h2><div class="cards" id="upcoming"></div></section>
+<div id="detail" onclick="this.style.display='none'"><div id="detailBox"></div></div>
 
 <script>
-const data=[
-{name:"Solo Leveling S3",date:"2026-12-15",poster:"https://cdn.myanimelist.net/images/anime/1925/142334.jpg",trailer:"HkIKAnw9QTg"},
-{name:"Demon Slayer Infinity Castle",date:"2026-07-18",poster:"https://cdn.myanimelist.net/images/anime/1286/146074.jpg",trailer:"wPFeBXT-GlA"},
-{name:"One Piece Egghead Pt2",date:"2026-01-11",poster:"https://cdn.myanimelist.net/images/anime/6/73245.jpg",trailer:"Ades3pQbeh8"}
+const animes=[
+{n:"Solo Leveling",r:"8.9",p:"https://cdn.myanimelist.net/images/anime/1925/142334.jpg"},
+{n:"One Piece",r:"9.0",p:"https://cdn.myanimelist.net/images/anime/6/73245.jpg"},
+{n:"Demon Slayer",r:"8.9",p:"https://cdn.myanimelist.net/images/anime/1286/146074.jpg"},
+{n:"Jujutsu Kaisen",r:"8.8",p:"https://cdn.myanimelist.net/images/anime/1806/126216.jpg"}
 ];
-const box=document.getElementById('upcoming');
+const movies=[
+{n:"Spider-Man Across",r:"8.7",p:"https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg"},
+{n:"John Wick 4",r:"8.2",p:"https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg"},
+{n:"Avengers Endgame",r:"8.4",p:"https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"},
+{n:"Oppenheimer",r:"8.3",p:"https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"}
+];
+const series=[
+{n:"Stranger Things",r:"8.7",p:"https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg"},
+{n:"Breaking Bad",r:"9.5",p:"https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg"},
+{n:"Loki S2",r:"8.2",p:"https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg"},
+{n:"Money Heist",r:"8.3",p:"https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg"}
+];
+
+function make(cards,data){
+cards.innerHTML="";
 data.forEach(m=>{
-let diff=Math.ceil((new Date(m.date)-new Date())/(1000*60*60*24));
-let txt=diff>0?diff+" din baki":"Released!";
-box.innerHTML+=`<div class="card"><div class="poster" style="background-image:url('${m.poster}')"></div><div class="card-info"><b>${m.name}</b><div class="rating">🗓️ ${m.date}</div><div class="count">⏳
+cards.innerHTML+=`<div class="card"><div class="poster" style="background-image:url('${m.p}')"></div><div class="info">${m.n}<div class="star">⭐ ${m.r}/10</div><a class="btn" href="javascript:openD('${m.n}','${m.p}','${m.r}')">▶️ Watch</a></div></div>`;
+});
+}
+make(document.getElementById('animeCards'),animes);
+make(document.getElementById('movieCards'),movies);
+make(document.getElementById('seriesCards'),series);
+
+function openD(n,p,r){
+document.getElementById('detail').style.display='flex';
+document.getElementById('detailBox').innerHTML=`<div class="poster" style="height:300px;background-image:url('${p}')"></div><div style="padding:14px"><h2 style="margin:0">${n}</h2><div class="star">⭐ ${r}/10</div><p style="color:#8da2b8;font-size:13px">Full HD in Telegram. No copyright issue.</p><a class="btn" href="https://t.me/dyv_movies" target="_blank">▶️ Watch Full on Telegram</a><div style="text-align:center;margin-top:10px;color:#8da2b8" onclick="document.getElementById('detail').style.display='none'">Close</div></div>`;
+}
+function filter(type,el){
+document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active')); el.classList.add('active');
+document.getElementById('animeSec').style.display = (type=='all'||type=='anime')?'block':'none';
+document.getElementById('movieSec').style.display = (type=='all'||type=='movie')?'block':'none';
+document.getElementById('seriesSec').style.display = (type=='all'||type=='series')?'block':'none';
+}
+</script>
+</body>
+</html>
