@@ -1,77 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DY_V</title>
+<title>DY_V - Castle</title>
 <style>
-body{margin:0;background:#060d1a;color:#fff;font-family:Arial}
-header{padding:14px 16px;background:#0a1628;position:sticky;top:0;z-index:20}
-.logo{font-size:34px;font-weight:900} .logo span{color:#e53233}
-nav{display:flex;gap:24px;margin-top:10px} nav a{color:#8da2b8;text-decoration:none;font-weight:bold;cursor:pointer} nav a.active{color:#fff;border-bottom:2px solid #e53233}
-.hero{margin:16px;border-radius:20px;background:linear-gradient(#132a4a,#0a1628);padding:22px;min-height:300px;display:flex;align-items:flex-end}
-.sec{padding:10px 14px} .cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:#0f1f36;border-radius:14px;overflow:hidden;border:1px solid #1e3456}
-.poster{height:230px;background-size:cover;background-position:center}
-.info{padding:8px;font-size:14px} .star{color:#ffce2e;font-weight:bold}
-.btn{display:block;background:#e53233;color:#fff;text-align:center;padding:7px;border-radius:8px;margin-top:6px;text-decoration:none;font-weight:bold}
-#detail{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
-#detailBox{background:#0f1f36;width:100%;max-width:400px;border-radius:16px;overflow:hidden}
+*{margin:0;box-sizing:border-box}body{background:#0e0e12;color:#fff;font-family:Arial;overflow-x:hidden}
+.top{display:flex;align-items:center;padding:12px;gap:10px;position:sticky;top:0;background:#0e0e12;z-index:10}
+.search{flex:1;background:#1e1e22;border-radius:24px;padding:10px 14px;display:flex;align-items:center;gap:8px;color:#999}
+.tabs{display:flex;gap:22px;padding:0 14px 10px;font-size:17px;color:#888} .tabs b{color:#fff;border-bottom:3px solid #ffb700;padding-bottom:4px}
+.hero{position:relative;height:420px;margin:10px;border-radius:16px;overflow:hidden;background:url('https://image.tmdb.org/t/p/w780/5YZbUmjbMa3ClvSW1Wj3EljG9zM.jpg');background-size:cover;background-position:center}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#0e0e12 5%, transparent 60%)}
+.play{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:2;border:1.5px solid #d6b98a;background:#00000090;padding:10px 50px;border-radius:30px;display:flex;align-items:center;gap:8px;font-weight:bold}
+.section{padding:14px 0 0 14px} .head{display:flex;justify-content:space-between;padding-right:14px;font-size:18px;font-weight:bold;margin-bottom:10px}
+.hscroll{display:flex;gap:10px;overflow:auto;padding-bottom:10px} .hscroll::-webkit-scrollbar{display:none}
+.langCard{min-width:160px;height:70px;border-radius:10px;display:flex;align-items:center;padding:10px;font-weight:900;font-size:20px;position:relative;overflow:hidden}
+.langCard.hi{background:#ff9500} .langCard.ta{background:#e6b800} .langCard.te{background:#00b578}
+.movieCard{min-width:130px;background:#1a1a1f;border-radius:10px;overflow:hidden;position:relative}
+.movieCard img{width:130px;height:180px;object-fit:cover;display:block}
+.badge{position:absolute;top:6px;left:6px;background:#000000a0;color:#00d0ff;font-size:11px;padding:2px 6px;border-radius:4px;font-weight:bold}
+.title{font-size:13px;padding:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:130px}
+.listBtn{margin:6px;border:1px solid #d6b98a;border-radius:20px;padding:5px;text-align:center;font-size:13px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#141419;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #222}
+.bottom div{color:#777;text-align:center;font-size:12px} .bottom b{color:#ffb700;display:block;font-size:20px}
+a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
-<header>
-<div class="logo">DY_<span>V</span></div>
-<nav><a class="active" onclick="filter('all',this)">🏠 Home</a><a onclick="filter('anime',this)">⚔️ Anime</a><a onclick="filter('movie',this)">🎬 Movies</a><a onclick="filter('series',this)">📺 Series</a></nav>
-</header>
-<div class="hero"><div><b style="color:#e53233">TRENDING</b><h1>DY_V is the home of Anime, Movies, Series.</h1></div></div>
+<div class="top"><div class="search">🔍 after the dark</div><div style="font-size:12px">💰 <b style="color:#ffb700">Earn<br>Money</b></div></div>
+<div class="tabs"><b>Home</b><span>Shows</span><span>Movie</span><span>Anime</span></div>
 
-<div class="sec" id="animeSec"><h2>🔥 Trending Anime</h2><div class="cards" id="animeCards"></div></div>
-<div class="sec" id="movieSec"><h2>🎬 Popular Movies</h2><div class="cards" id="movieCards"></div></div>
-<div class="sec" id="seriesSec"><h2>📺 Trending Series</h2><div class="cards" id="seriesCards"></div></div>
+<div class="hero"><a href="https://t.me/dyv_movies" target="_blank" class="play">▶ PLAY</a></div>
 
-<div id="detail" onclick="this.style.display='none'"><div id="detailBox"></div></div>
+<div class="section"><div class="head">Explore In Your Language</div><div class="hscroll">
+<div class="langCard hi">हिन्दी</div><div class="langCard ta">தமிழ்</div><div class="langCard te">తెలుగు</div>
+</div></div>
+
+<div class="section"><div class="head">Watch Popular Movies ></div><div class="hscroll" id="popular"></div></div>
+<div class="section"><div class="head">Upcoming ></div><div style="font-size:12px;color:#888;margin-bottom:8px">Sept.11 —— Sept.11 —— Sept.11</div><div class="hscroll" id="upcoming"></div></div>
+<div class="section"><div class="head">Hottest International Film 🔥 ></div><div class="hscroll" id="hot"></div></div>
+
+<div style="height:80px"></div>
+<div class="bottom"><div><b>🏠</b>Home</div><div><b>🎞️</b>Find</div><div><b>📺</b>TV</div><div><b>⬇️</b>Download</div><div><b>☺️</b>Me</div></div>
 
 <script>
-const animes=[
-{n:"Solo Leveling",r:"8.9",p:"https://cdn.myanimelist.net/images/anime/1925/142334.jpg"},
-{n:"One Piece",r:"9.0",p:"https://cdn.myanimelist.net/images/anime/6/73245.jpg"},
-{n:"Demon Slayer",r:"8.9",p:"https://cdn.myanimelist.net/images/anime/1286/146074.jpg"},
-{n:"Jujutsu Kaisen",r:"8.8",p:"https://cdn.myanimelist.net/images/anime/1806/126216.jpg"}
+const pops=[
+{p:"https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",n:"TOXIC"},
+{p:"https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",n:"John Wick 4"},
+{p:"https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",n:"Endgame"},
+{p:"https://cdn.myanimelist.net/images/anime/1925/142334.jpg",n:"Solo Leveling"},
 ];
-const movies=[
-{n:"Spider-Man Across",r:"8.7",p:"https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg"},
-{n:"John Wick 4",r:"8.2",p:"https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg"},
-{n:"Avengers Endgame",r:"8.4",p:"https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"},
-{n:"Oppenheimer",r:"8.3",p:"https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"}
+const ups=[
+{p:"https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg",n:"Haiwaan"},
+{p:"https://image.tmdb.org/t/p/w500/gKZgWgQ5E7Z7K3x1b1y1x1y.jpg",n:"The Revolutionaries"},
+{p:"https://image.tmdb.org/t/p/w500/qW4crfED8mpNDadSmMdi7ZDzhXF.jpg",n:"Ghamasaan"},
 ];
-const series=[
-{n:"Stranger Things",r:"8.7",p:"https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg"},
-{n:"Breaking Bad",r:"9.5",p:"https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg"},
-{n:"Loki S2",r:"8.2",p:"https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg"},
-{n:"Money Heist",r:"8.3",p:"https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg"}
+const hots=[
+{p:"https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",n:"Insidious"},
+{p:"https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",n:"Evil Dead Burn"},
+{p:"https://image.tmdb.org/t/p/w500/e3nbpnXpl1fD2P0kfP3yV5P9L.jpg",n:"Mandalorian"},
 ];
-
-function make(cards,data){
-cards.innerHTML="";
+function fill(id,data){
+let box=document.getElementById(id);
 data.forEach(m=>{
-cards.innerHTML+=`<div class="card"><div class="poster" style="background-image:url('${m.p}')"></div><div class="info">${m.n}<div class="star">⭐ ${m.r}/10</div><a class="btn" href="javascript:openD('${m.n}','${m.p}','${m.r}')">▶️ Watch</a></div></div>`;
+box.innerHTML+=`<div class="movieCard"><span class="badge">MULTILINGUAL</span><img src="${m.p}" onclick="window.open('https://t.me/dyv_movies','_blank')"><div class="title">${m.n}</div><div class="listBtn">+ List</div></div>`;
 });
 }
-make(document.getElementById('animeCards'),animes);
-make(document.getElementById('movieCards'),movies);
-make(document.getElementById('seriesCards'),series);
-
-function openD(n,p,r){
-document.getElementById('detail').style.display='flex';
-document.getElementById('detailBox').innerHTML=`<div class="poster" style="height:300px;background-image:url('${p}')"></div><div style="padding:14px"><h2 style="margin:0">${n}</h2><div class="star">⭐ ${r}/10</div><p style="color:#8da2b8;font-size:13px">Full HD in Telegram. No copyright issue.</p><a class="btn" href="https://t.me/dyv_movies" target="_blank">▶️ Watch Full on Telegram</a><div style="text-align:center;margin-top:10px;color:#8da2b8" onclick="document.getElementById('detail').style.display='none'">Close</div></div>`;
-}
-function filter(type,el){
-document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active')); el.classList.add('active');
-document.getElementById('animeSec').style.display = (type=='all'||type=='anime')?'block':'none';
-document.getElementById('movieSec').style.display = (type=='all'||type=='movie')?'block':'none';
-document.getElementById('seriesSec').style.display = (type=='all'||type=='series')?'block':'none';
-}
+fill('popular',pops); fill('upcoming',ups); fill('hot',hots);
 </script>
 </body>
 </html>
