@@ -1,64 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DY_V</title>
-<style>
-*{margin:0;box-sizing:border-box}body{background:#0e0e12;color:#fff;font-family:Arial}
-.top{padding:12px 14px;display:flex;justify-content:space-between;position:sticky;top:0;background:#0e0e12;z-index:10}
-.search{flex:1;background:#1e1e22;border-radius:22px;padding:10px 14px;color:#999;margin-right:10px}
-.tabs{display:flex;gap:22px;padding:8px 14px;color:#888;font-weight:bold} .tabs b{color:#fff;border-bottom:3px solid #ffb700;padding-bottom:4px}
-.hero{height:380px;margin:10px;border-radius:16px;overflow:hidden;position:relative;background-size:cover;background-position:center}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#0e0e12 5%,transparent 60%)}
-.play{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:2;background:#00000090;border:1px solid #fff;padding:10px 40px;border-radius:30px;font-weight:bold}
-.sec{padding:14px 0 0 12px} .h{font-size:18px;font-weight:bold;margin-bottom:8px}
-.hscroll{display:flex;gap:10px;overflow:auto;padding-bottom:12px} .hscroll::-webkit-scrollbar{display:none}
-.card{min-width:150px;background:#1a1a1f;border-radius:12px;overflow:hidden;cursor:pointer}
-.card img{width:150px;height:210px;object-fit:cover;display:block;background:#222}
-.info{padding:7px} .date{color:#ffb700;font-size:11px;font-weight:bold} .left{color:#00ff88;font-size:11px}
-#box{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:99;padding:10px}
-#inner{width:100%;max-width:600px;background:#141419;border-radius:12px;overflow:hidden}
-</style>
-</head>
-<body>
-<div class="top"><div class="search">🔍 Search...</div><div style="font-weight:900">DY_<span style="color:#e53233">V</span></div></div>
-<div class="tabs"><b>Home</b><span>Movies</span><span>Series</span><span>Anime</span></div>
+{
+  "name": "DY_V Anime Movies Series",
+  "short_name": "DY_V",
+  "description": "Anime, Movies and Series",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0b10",
+  "theme_color": "#0b0b10",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0b0b10">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes"><script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js")
+    .then(() => console.log("DY_V Service Worker Ready"))
+    .catch(err => console.log("SW Error:", err));
+}
 
-<div class="hero" id="hero"><div class="play" onclick="openT('Solo Leveling S3 Trailer','HkIKAnw9QTg')">▶ PLAY TRAILER</div></div>
+let deferredPrompt;
 
-<div class="sec"><div class="h">🔥 Real Anime</div><div class="hscroll" id="anime"></div></div>
-<div class="sec"><div class="h">🎬 Real Movies</div><div class="hscroll" id="movies"></div></div>
-<div class="sec"><div class="h">📺 Real Series</div><div class="hscroll" id="series"></div></div>
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
 
-<div id="box" onclick="closeT()"><div id="inner" onclick="event.stopPropagation()"></div></div>
-<div style="height:70px"></div>
+  const btn = document.getElementById("installBtn");
+  if (btn) btn.style.display = "block";
+});
 
-<script>
-const animes=[
-{n:"Solo Leveling S3",d:"2026-12-15",p:"https://cdn.myanimelist.net/images/anime/1925/142334l.jpg",y:"HkIKAnw9QTg"},
-{n:"Demon Slayer Infinity Castle",d:"2026-07-18",p:"https://cdn.myanimelist.net/images/anime/1286/146074l.jpg",y:"wPFeBXT-GlA"},
-{n:"Jujutsu Kaisen S3",d:"2026-09-30",p:"https://cdn.myanimelist.net/images/anime/1806/126216l.jpg",y:"apcY2B74J3A"},
-{n:"One Piece Egghead",d:"2026-01-11",p:"https://cdn.myanimelist.net/images/anime/6/73245l.jpg",y:"Ades3pQbeh8"}
-];
-const movies=[
-{n:"Spider-Man: Brand New Day",d:"2026-07-24",p:"https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",y:"qN_yN-EoeQ0"},
-{n:"John Wick 4",d:"2023-03-24",p:"https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",y:"qEVU3r4dXhw"},
-{n:"Avengers Endgame",d:"2019-04-26",p:"https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",y:"TcMBFSGVi1c"},
-{n:"Oppenheimer",d:"2023-07-21",p:"https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",y:"uYPbbksJxIg"}
-];
-const series=[
-{n:"Stranger Things",d:"2016-07-15",p:"https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",y:"yQEondeGvKo"},
-{n:"Breaking Bad",d:"2008-01-20",p:"https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",y:"HhesaQXLuRY"},
-{n:"Loki Season 2",d:"2023-10-06",p:"https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg",y:"nH5FOo_AQYQ"},
-{n:"Money Heist",d:"2017-05-02",p:"https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg",y:"_InqQJRqGW4"}
-];
-document.getElementById('hero').style.backgroundImage=`url('${animes[0].p}')`;
-function left(d){let diff=Math.ceil((new Date(d)-new Date())/(1000*60*60*24));return diff>0?diff+" din baki":"Released"}
-function fill(id,data){let b=document.getElementById(id);b.innerHTML="";data.forEach(m=>{b.innerHTML+=`<div class="card" onclick="openT('${m.n}','${m.y}')"><img src="${m.p}" loading="lazy"><div class="info"><div style="font-size:12px;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${m.n}</div><div class="date">🗓️ ${m.d}</div><div class="left">⏳ ${left(m.d)}</div></div></div>`})}
-fill('anime',animes); fill('movies',movies); fill('series',series);
-function openT(t,y){document.getElementById('box').style.display='flex';document.getElementById('inner').innerHTML=`<div style="aspect-ratio:16/9"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/${y}?autoplay=1" frameborder="0" allowfullscreen></iframe></div><div style="padding:12px"><b>${t}</b><div style="color:#999;font-size:12px;margin-top:4px">Official Trailer</div><div onclick="closeT()" style="margin-top:10px;background:#222;padding:8px;border-radius:8px;text-align:center">Close</div></div>`}
-function closeT(){document.getElementById('box').style.display='none';document.getElementById('inner').innerHTML=""}
-</script>
-</body>
-</html>
+async function installApp() {
+  if (!deferredPrompt) {
+    alert("Chrome menu ⋮ se 'Add to Home screen' choose karo.");
+    return;
+  }
+
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+
+  document.getElementById("installBtn").style.display = "none";
+}
+</script><button id="installBtn"
+        onclick="installApp()"
+        style="display:none;">
+  📲 Install DY_V App
+</button>
